@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base :: head}">
+<meta charset="UTF-8">
+<title>Novo Pedido</title>
+</head>
+<body>
+	<header th:replace="~{base :: logo}"></header>
+	<div class="container">
+
+		<div th:replace="~{base :: titulo('Novo Pedido ')}"></div>
+	
+	<div class="card mt-3">
+	<form class="card-body" action="/pedido/novo" method="POST" th:object="${requisicaoNovoPedido}">
+		<div class="form-group">
+			<label for="nomeProduto">Produto</label>
+			<input  placeholder="Nome do Produto" th:errorclass="is-invalid" class="form-control " th:field="*{nomeProduto}" >
+			<small>Informa qual o nome do produto</small>
+			<div th:errors="*{nomeProduto}" class="invalid-feedback"></div>
+		</div>
+		
+		<div class="form-group">
+			<label for="urlProduto">URL</label>
+			<input name="urlProduto" placeholder="URL do Produto" class="form-control" th:field="*{urlProduto}" th:errorclass="is-invalid" >
+			<small>Coloque a url do site do produto</small>
+			<div th:errors="*{urlProduto}" class="invalid-feedback"></div>
+		</div>
+		
+		<div class="form-group">
+			<label for="urlImagem">IMAGEM</label>
+			<input name="urlImagem" placeholder="URL da Imagem" class="form-control" th:field="*{urlImagem}" th:errorclass="is-invalid">
+			<small>Coloque Imagem do produto</small>
+			<div th:errors="*{urlImagem}" class="invalid-feedback"></div>
+		</div>
+		
+		<div class="form-group">
+			<label for="descricao">Descricao</label>
+			<textarea placeholder="Adicione detalhes importantes para ajudar o comprador" class="form-control" th:field="*{descricao}" th:errorclass="is-invalid"></textarea>
+			<small></small>
+			<div th:errors="*{descricao}" class="invalid-feedback"></div>
+		</div>
+		<button class="btn btn-primary" type="submit">Cadastrar</button>
+	
+	</form>
+	</div>
+	</div>
+</body>
+</html>
